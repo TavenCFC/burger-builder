@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Burger from '../../components/Burger/Burger'
 import Auxiliary from '../../hoc/Auxiliary';
-import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import {testRequest} from '../../store/actions';
+import Fetch from 'isomorphic-fetch';
 
 class BurgerBuilder extends Component {
     state = {
@@ -13,6 +15,11 @@ class BurgerBuilder extends Component {
             meat: 1
         }
     };
+
+componentDidMount() {
+
+
+}
 
     render() {
         return (
@@ -32,7 +39,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdd: (ingredient) => dispatch({type: 'ADD', ingredient: ingredient, val: 1})
+    onIngredientAdd() {
+     dispatch(testRequest());
+   }
   };
 };
 
